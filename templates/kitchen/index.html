@@ -1,10 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>Kitchen service home</h1>
+  <p>Welcome on home page of the kitchen</p>
+  <ul>
+    <li>Cooks: {{ num_cooks }}</li>
+    <li>Dish types: {{ num_dish_type }}</li>
+    <li>Dishes: {{ num_dishes }}</li>
+  </ul>
+
+  <p>
+    You have visited this page {{ num_visits }} time{{ num_visits|pluralize }}
+  </p>
+{% endblock %}

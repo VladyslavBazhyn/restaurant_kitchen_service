@@ -1,10 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends "base.html" %}
 
+<body>
+  {% block content %}
+    <h3>Detail information about {{ dish_type.name }}</h3>
+    <a href="#" class="btn btn-danger link-to-page float-right">
+        Delete
+    </a>
+    <a href="#" class="btn btn-secondary link-to-page float-right">
+        Update
+    </a>
+
+    <h5><strong>All dishes this type:</strong></h5>
+      {% if dishes_type.dishes.all %}
+        <ul>
+          {% for dish in dish_type.dishes.all %}
+            <li>{{ dish.name }}</li>
+          {% endfor %}
+        </ul>
+      {% else %}
+        <p>Now we don't have any dishes of this type on our kitchen</p>
+      {% endif %}
+  {% endblock %}
 </body>
-</html>

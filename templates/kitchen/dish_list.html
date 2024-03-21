@@ -1,13 +1,14 @@
 {% extends "base.html" %}
 <!--Pagination?-->
+<!--Name of dish_type it is in video-->
 <body>
   {% block content %}
     <h2>List of all dishes</h2>
     {% if dish_list %}
       {% for dish in dish_list %}
         <ul>
-          <li>({{ dish.id }}) <a href="#">{{ dish.name }}</a></li>
-          <li>Type: {{ dish.dish_type }}</li>
+          <li>({{ dish.id }}) <a href="#">{{ dish.name }}</a> </li>
+          <li>Type: {{ dish.dish_type.name }}</li>
           <li>Price: {{ dish.price }}</li>
         </ul>
       {% endfor %}

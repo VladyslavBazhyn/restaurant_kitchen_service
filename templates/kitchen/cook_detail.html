@@ -21,7 +21,7 @@
       {% if cook.dishes.all %}
         {% for dish in cook.dishes.all %}
           <hr>
-          <p>Name: <a href="#">{{ dish.name }}</a></p>
+          <p>Name: <a href="{% url 'kitchen:dish-detail' pk=dish.id %}">{{ dish.name }}</a></p>
           <p>Description: {{ dish.description }}</p>
         {% endfor %}
       {% else %}

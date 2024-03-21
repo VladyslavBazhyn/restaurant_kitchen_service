@@ -1,5 +1,3 @@
-from datetime import timedelta
-
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 from django.urls import reverse
@@ -7,24 +5,20 @@ from django.urls import reverse
 
 class DishType(models.Model):
     name = models.CharField(max_length=30)
+    description = models.TextField(null=True)
+
+    def __str__(self) -> str:
+        return f"{self.name}"
 
 
 class Ingredient(models.Model):
     name = models.CharField(max_length=20)
     price = models.DecimalField(max_digits=10, decimal_places=2)
     description = models.TextField()
-    time_for_using = models.PositiveIntegerField()
     bought_date = models.DateField(
         auto_now_add=True,
     )
-    best_before = models.DateField()
-
-    def save(self, *args, **kwargs) -> None:
-        if not self.pk:
-            self.best_before = (
-                    self.bought_date + timedelta(days=self.time_for_using)
-            )
-            super().save(*args, **kwargs)
+    best_before = models.DateField(null=True)
 
 
 class Cook(AbstractUser):

@@ -10,11 +10,17 @@ from kitchen.views import (
     DishListView,
     DishDetailView,
     DishTypeListView,
-    DishTypeDetailView
+    DishTypeDetailView,
+    IngredientListView,
+    IngredientDetailView
 )
 
 urlpatterns = [
-    path("", index),
+    path(
+        "",
+        index,
+        name="index"
+    ),
     path(
         "cooks/",
         CookListView.as_view(),
@@ -28,7 +34,7 @@ urlpatterns = [
     path(
         "dishes/",
         DishListView.as_view(),
-        name="dish-list:"
+        name="dishes-list"
     ),
     path(
         "dishes/<int:pk>",
@@ -38,12 +44,22 @@ urlpatterns = [
     path(
         "dish_types/",
         DishTypeListView.as_view(),
-        name="dish_types-list:"
+        name="dish-type-list"
     ),
     path(
-        "dish_types/<int:pk>",
+        "dish_types/<int:pk>/",
         DishTypeDetailView.as_view(),
-        name="dish_types-detail"
+        name="dish-types-detail"
+    ),
+    path(
+        "ingredients/<int:pk>/",
+        IngredientDetailView.as_view(),
+        name="ingredient-detail"
+    ),
+    path(
+        "ingredients/",
+        IngredientListView.as_view(),
+        name="ingredient-list"
     )
 ]
 

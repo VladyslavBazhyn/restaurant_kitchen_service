@@ -2,7 +2,7 @@
 
 <body>
   {% block content %}
-    <h3>Detail information about {{ dish_type.name }}</h3>
+    <h3>Detail information about <strong>{{ dish_type_detail.name }}</strong> dish type</h3>
     <a href="#" class="btn btn-danger link-to-page float-right">
         Delete
     </a>
@@ -11,10 +11,14 @@
     </a>
 
     <h5><strong>All dishes this type:</strong></h5>
-      {% if dishes_type.dishes.all %}
+      {% if dish_type_detail.dish_set.all %}
         <ul>
-          {% for dish in dish_type.dishes.all %}
-            <li>{{ dish.name }}</li>
+          {% for dish in dish_type_detail.dish_set.all %}
+            <p>
+              <a href="{% url 'kitchen:dish-detail' pk=dish.id %}">
+                 {{ dish.name }}
+              </a>
+            </p>
           {% endfor %}
         </ul>
       {% else %}

@@ -17,7 +17,7 @@
     <h5><strong>Ingredients:</strong></h5>
       <ul>
         {% for ingredient in dish.ingredients.all %}
-          <li>{{ ingredient.name }}</li>
+          <li><a href="{% url 'kitchen:ingredient-detail' pk=ingredient.id %}">{{ ingredient.name }}</a></li>
         {% endfor %}
       </ul>
   {% endblock %}

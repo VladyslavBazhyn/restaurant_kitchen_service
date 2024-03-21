@@ -1,10 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends "base.html" %}
 
+<body>
+  {% block content %}
+    <h2>List of all dishes</h2>
+    {% if dish_list %}
+      {% for dish in dish_list %}
+        <ul>
+          <li>({{ dish.id }}) <a href="{{ url '' }}">{{ dish.name }}</a></li>
+          <li>Type: {{ dish.dish_type }}</li>
+          <li>Price: {{ dish.price }}</li>
+        </ul>
+      {% endfor %}
+    {% else %}
+      <p>Now we don't have any dishes on our kitchen</p>
+    {% endif %}
+  {% endblock %}
 </body>
-</html>

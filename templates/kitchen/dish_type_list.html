@@ -1,10 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
+{% extends "base.html" %}
+<!--Pagination?-->
+<!--Name of dish_type_list it is in video-->
 <body>
-$END$
+  {% block content %}
+    <h2>List of all dish types</h2>
+    {% if dish_type_list %}
+      {% for dish_type in dish_type_list %}
+        <ul>
+          <li>({{ dish_type.id }}) <a href="#">{{ dish_type.name }}</a> </li>
+          <li></li>
+          <li></li>
+        </ul>
+      {% endfor %}
+    {% else %}
+      <p>Now we don't have any dish types on our kitchen</p>
+    {% endif %}
+  {% endblock %}
 </body>
-</html>

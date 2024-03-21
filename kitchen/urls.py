@@ -6,7 +6,11 @@ from django.urls import path, include
 from kitchen.views import (
     index,
     CookListView,
-    CookDetailView
+    CookDetailView,
+    DishListView,
+    DishDetailView,
+    DishTypeListView,
+    DishTypeDetailView
 )
 
 urlpatterns = [
@@ -20,6 +24,26 @@ urlpatterns = [
         "cooks/<int:pk>",
         CookDetailView.as_view(),
         name="cook-detail"
+    ),
+    path(
+        "dishes/",
+        DishListView.as_view(),
+        name="dish-list:"
+    ),
+    path(
+        "dishes/<int:pk>",
+        DishDetailView.as_view(),
+        name="dish-detail"
+    ),
+    path(
+        "dish_types/",
+        DishTypeListView.as_view(),
+        name="dish_types-list:"
+    ),
+    path(
+        "dish_types/<int:pk>",
+        DishTypeDetailView.as_view(),
+        name="dish_types-detail"
     )
 ]
 

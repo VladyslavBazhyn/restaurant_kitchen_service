@@ -1,10 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
+{% extends "base.html" %}
+
 <body>
-$END$
+  {% block content %}
+    <h3>Detail information about {{ dish.name }}</h3>
+  <h5><strong>Dish type:</strong> {{ dish.dish_type }}
+      <a href="#" class="btn btn-danger link-to-page float-right">
+        Delete
+      </a>
+      <a href="#" class="btn btn-secondary link-to-page float-right">
+        Update
+      </a>
+    </h5>
+
+    <h5><strong>Description:</strong></h5>
+      <p>{{ dish.description }}</p>
+    <h5><strong>Ingredients:</strong></h5>
+      <ul>
+        {% for ingredient in dish.ingredients.all %}
+          <li>{{ ingredient.name }}</li>
+        {% endfor %}
+      </ul>
+  {% endblock %}
 </body>
-</html>

@@ -8,23 +8,19 @@ from django.urls import reverse
 class DishType(models.Model):
     name = models.CharField(max_length=30)
 
+    def __str__(self) -> str:
+        return f"{self.name}"
+
 
 class Ingredient(models.Model):
     name = models.CharField(max_length=20)
     price = models.DecimalField(max_digits=10, decimal_places=2)
     description = models.TextField()
-    time_for_using = models.PositiveIntegerField()
     bought_date = models.DateField(
         auto_now_add=True,
     )
-    best_before = models.DateField()
+    best_before = models.DateField(null=True)
 
-    def save(self, *args, **kwargs) -> None:
-        if not self.pk:
-            self.best_before = (
-                    self.bought_date + timedelta(days=self.time_for_using)
-            )
-            super().save(*args, **kwargs)
 
 
 class Cook(AbstractUser):

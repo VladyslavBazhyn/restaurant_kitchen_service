@@ -7,8 +7,8 @@
   {% endif %}
   <br>
   
-  <li class="list-group-item"><a href="#">Home</a></li>
-  <li class="list-group-item"><a href="#">Dish types</a></li>
-  <li class="list-group-item"><a href="#">Dishes</a></li>
+  <li class="list-group-item"><a href="{% url 'kitchen:index' %}">Home</a></li>
+  <li class="list-group-item"><a href="{% url 'kitchen:dish-type-list' %}">Dish types</a></li>
+  <li class="list-group-item"><a href="{% url 'kitchen:dishes-list' %}">Dishes</a></li>
   <li class="list-group-item"><a href="{% url 'kitchen:cook-list' %}">Cooks</a></li>
 </ul>

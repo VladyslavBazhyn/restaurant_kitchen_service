@@ -1,5 +1,3 @@
-from datetime import timedelta
-
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 from django.urls import reverse
@@ -7,6 +5,7 @@ from django.urls import reverse
 
 class DishType(models.Model):
     name = models.CharField(max_length=30)
+    description = models.TextField(null=True)
 
     def __str__(self) -> str:
         return f"{self.name}"
@@ -20,7 +19,6 @@ class Ingredient(models.Model):
         auto_now_add=True,
     )
     best_before = models.DateField(null=True)
-
 
 
 class Cook(AbstractUser):

@@ -1,10 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends "base.html" %}
 
+<body>
+  {% block content %}
+  <h2>Ingredient <strong>{{ ingredient.name }}</strong> from <strong>{{ ingredient.bought_date }}</strong></h2>
+    <ul>
+      <li>Price: {{ ingredient.price }}</li>
+      <li>Description: {{ ingredient.description }}</li>
+      <li>Best before: {{ ingredient.best_before }}</li>
+    </ul>
+  {% endblock %}
 </body>
-</html>

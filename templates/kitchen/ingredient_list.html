@@ -1,10 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
+{% extends "base.html" %}
+<!--Pagination?-->
+<!--Name of dish_type it is in video-->
 <body>
-
+  {% block content %}
+    <h2>List of all ingredients</h2>
+    {% if ingredient_list %}
+      {% for ingredient in ingredient_list %}
+        <ul>
+          <li>
+            ({{ ingredient.id }})
+            <a href="{% url 'kitchen:ingredient-detail' pk=ingredient.id%}">
+              {{ ingredient.name }}
+            </a>
+          </li>
+          <li>Price: {{ ingredient.price }}</li>
+        </ul>
+      {% endfor %}
+    {% else %}
+      <p>Now we don't have any ingredient on our kitchen</p>
+    {% endif %}
+  {% endblock %}
 </body>
-</html>

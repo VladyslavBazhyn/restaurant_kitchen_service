@@ -49,7 +49,7 @@ urlpatterns = [
     path(
         "dish_types/<int:pk>/",
         DishTypeDetailView.as_view(),
-        name="dish_types-detail"
+        name="dish-types-detail"
     ),
     path(
         "ingredients/<int:pk>/",

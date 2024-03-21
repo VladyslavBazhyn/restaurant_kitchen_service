@@ -13,16 +13,11 @@ class Ingredient(models.Model):
     name = models.CharField(max_length=20)
     price = models.DecimalField(max_digits=10, decimal_places=2)
     description = models.TextField()
-    time_for_using = models.PositiveIntegerField(
-        db_comment="How many days you can use ingredient"
-    )
+    time_for_using = models.PositiveIntegerField()
     bought_date = models.DateField(
         auto_now_add=True,
-        db_comment="Date when ingredient was bought"
     )
-    best_before = models.DateField(
-        db_comment="Last day for using ingredient"
-    )
+    best_before = models.DateField()
 
     def save(self, *args, **kwargs) -> None:
         if not self.pk:
@@ -33,7 +28,9 @@ class Ingredient(models.Model):
 
 
 class Cook(AbstractUser):
-    years_of_experience = models.IntegerField()
+    years_of_experience = models.IntegerField(null=True)
+    first_name = models.CharField(max_length=255)
+    last_name = models.CharField(max_length=255)
 
     class Meta:
         verbose_name = "cook"
@@ -49,7 +46,14 @@ class Cook(AbstractUser):
 class Dish(models.Model):
     name = models.CharField(max_length=60)
     description = models.TextField()
-    price = models.DecimalField()
+    price = models.DecimalField(max_digits=10, decimal_places=2)
     dish_type = models.ForeignKey(DishType, on_delete=models.CASCADE)
-    ingredients = models.ManyToManyField(Ingredient)
-    cooks = models.ManyToManyField(Cook)
+    ingredients = models.ManyToManyField(Ingredient, related_name="dishes")
+    cooks = models.ManyToManyField(Cook, related_name="dishes")
+
+    class Meta:
+        verbose_name = "dish"
+        verbose_name_plural = "dishes"
+
+    def __str__(self) -> str:
+        return f"Dish: {self.name} with price: {self.price}"

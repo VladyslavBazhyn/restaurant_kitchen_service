@@ -1,10 +1,42 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends "base.html" %}
 
-</body>
-</html>
+<body>
+{% block content %}
+  <h3>Detail information about {{ cook.username }}</h3>
+  <h5>Username: {{ cook.username }}
+    <a href="#" class="btn btn-danger link-to-page float-right">
+      Delete
+    </a>
+
+    <a href="#" class="btn btn-secondary link-to-page float-right">
+      Update
+    </a>
+  </h5>
+
+  <h5><strong>First name:</strong> {{ cook.first_name }}</h5>
+  <h5><strong>Last name:</strong> {{ cook.last_name }}</h5>
+  <h5><strong>Years of experience:</strong> {{ cook.years_of_experience }}</h5>
+  <h5><strong>Is staff:</strong> {% if cook.is_staff %} Yes {% else %} No {% endif %}</h5>
+
+  <h5><strong>Dishes which {{ cook.username }} can cook:</strong></h5>
+    {% if cook.dishes.all %}
+      {% for dish in cook.dishes.all %}
+        <hr>
+        <p>Name: {{ dish.name }}</p>
+        <p>Description: {{ dish.description }}</p>
+        <p>Ingredients:
+          {% if dish.ingredient.all %}
+            {% for ingredient in dish.ingredient.all %}
+              {{ ingredient.name }}
+            {% endfor %}
+          {% else %}
+            Unknown
+          {% endif %}
+        </p>
+      {% endfor %}
+    {% else %}
+      <p>This cook can't make dishes now</p>
+    {% endif %}
+
+
+{% endblock %}

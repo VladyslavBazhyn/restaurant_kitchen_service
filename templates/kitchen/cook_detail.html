@@ -17,22 +17,12 @@
     <h5><strong>Last name:</strong> {{ cook.last_name }}</h5>
     <h5><strong>Years of experience:</strong> {{ cook.years_of_experience }}</h5>
     <h5><strong>Is staff:</strong> {% if cook.is_staff %} Yes {% else %} No {% endif %}</h5>
-
-    <h5><strong>Dishes which {{ cook.username }} can cook:</strong></h5>
+    <h5>Dishes which<strong> {{ cook.first_name }} {{ cook.last_name }} </strong>can cook:</h5>
       {% if cook.dishes.all %}
         {% for dish in cook.dishes.all %}
           <hr>
-          <p>Name: {{ dish.name }}</p>
+          <p>Name: <a href="#">{{ dish.name }}</a></p>
           <p>Description: {{ dish.description }}</p>
-          <p>Ingredients:
-            {% if dish.ingredient.all %}
-              {% for ingredient in dish.ingredient.all %}
-                {{ ingredient.name }}
-              {% endfor %}
-            {% else %}
-              Unknown
-            {% endif %}
-          </p>
         {% endfor %}
       {% else %}
         <p>This cook can't make dishes now</p>

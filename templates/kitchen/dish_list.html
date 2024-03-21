@@ -1,12 +1,12 @@
 {% extends "base.html" %}
-
+<!--Pagination?-->
 <body>
   {% block content %}
     <h2>List of all dishes</h2>
     {% if dish_list %}
       {% for dish in dish_list %}
         <ul>
-          <li>({{ dish.id }}) <a href="{{ url '' }}">{{ dish.name }}</a></li>
+          <li>({{ dish.id }}) <a href="#">{{ dish.name }}</a></li>
           <li>Type: {{ dish.dish_type }}</li>
           <li>Price: {{ dish.price }}</li>
         </ul>

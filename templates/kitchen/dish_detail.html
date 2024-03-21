@@ -3,7 +3,7 @@
 <body>
   {% block content %}
     <h3>Detail information about {{ dish.name }}</h3>
-    <h5>Dish type: {{ dish.dish_type }}
+  <h5><strong>Dish type:</strong> {{ dish.dish_type }}
       <a href="#" class="btn btn-danger link-to-page float-right">
         Delete
       </a>
@@ -20,6 +20,5 @@
           <li>{{ ingredient.name }}</li>
         {% endfor %}
       </ul>
-
   {% endblock %}
 </body>

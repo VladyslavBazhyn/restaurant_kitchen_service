@@ -4,12 +4,8 @@
   {% block content %}
     <h3>Detail information about {{ cook.username }}</h3>
     <h5>Username: {{ cook.username }}
-      <a href="#" class="btn btn-danger link-to-page float-right">
+      <a href="{% url 'kitchen:cook-delete' pk=cook.id %}" class="btn btn-danger link-to-page float-right">
         Delete
-      </a>
-
-      <a href="#" class="btn btn-secondary link-to-page float-right">
-        Update
       </a>
     </h5>
 

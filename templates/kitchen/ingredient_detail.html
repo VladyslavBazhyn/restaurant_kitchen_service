@@ -3,6 +3,12 @@
 <body>
   {% block content %}
   <h2>Ingredient <strong>{{ ingredient.name }}</strong> from <strong>{{ ingredient.bought_date }}</strong></h2>
+    <a href="{% url 'kitchen:ingredient-delete' pk=ingredient.id %}" class="btn btn-danger link-to-page float-right">
+        Delete
+    </a>
+    <a href="{% url 'kitchen:ingredient-update' pk=ingredient.id %}" class="btn btn-secondary link-to-page float-right">
+        Update
+    </a>
     <ul>
       <li>Price: {{ ingredient.price }}</li>
       <li>Description: {{ ingredient.description }}</li>

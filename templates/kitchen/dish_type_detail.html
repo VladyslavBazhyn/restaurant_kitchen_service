@@ -3,10 +3,10 @@
 <body>
   {% block content %}
     <h3>Detail information about <strong>{{ dish_type_detail.name }}</strong> dish type</h3>
-    <a href="#" class="btn btn-danger link-to-page float-right">
+    <a href="{% url 'kitchen:dish-type-delete' pk=dish_type_detail.id %}" class="btn btn-danger link-to-page float-right">
         Delete
     </a>
-    <a href="#" class="btn btn-secondary link-to-page float-right">
+    <a href="{% url 'kitchen:dish-type-update' pk=dish_type_detail.id %}" class="btn btn-secondary link-to-page float-right">
         Update
     </a>
 

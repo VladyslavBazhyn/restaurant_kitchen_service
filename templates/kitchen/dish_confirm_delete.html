@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block content %}
+  {% block confirm_delete %}
+    <h1>Delete dish?</h1>
+
+    {% include "includes/confirm_delete.html" %}
+  {% endblock %}
+{% endblock %}

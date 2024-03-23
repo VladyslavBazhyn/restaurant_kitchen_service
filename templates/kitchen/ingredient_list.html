@@ -12,8 +12,8 @@
             <a href="{% url 'kitchen:ingredient-detail' pk=ingredient.id%}">
               {{ ingredient.name }}
             </a>
+            ({{ ingredient.price }})
           </li>
-          <li>Price: {{ ingredient.price }}</li>
         </ul>
       {% endfor %}
     {% else %}

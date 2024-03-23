@@ -12,9 +12,9 @@
             <a href="{% url 'kitchen:dish-detail' pk=dish.id%}">
               {{ dish.name }}
             </a>
+             / Type: {{ dish.dish_type.name }}
+             / Price: {{ dish.price }}
           </li>
-          <li>Type: {{ dish.dish_type.name }}</li>
-          <li>Price: {{ dish.price }}</li>
         </ul>
       {% endfor %}
     {% else %}

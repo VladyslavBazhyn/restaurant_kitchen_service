@@ -7,12 +7,20 @@ from kitchen.views import (
     index,
     CookListView,
     CookDetailView,
+    CookDeleteView,
+    CookUpdateView,
     DishListView,
     DishDetailView,
+    DishDeleteView,
+    DishUpdateView,
     DishTypeListView,
     DishTypeDetailView,
+    DishTypeDeleteView,
+    DishTypeUpdateView,
     IngredientListView,
-    IngredientDetailView
+    IngredientDetailView,
+    IngredientDeleteView,
+    IngredientUpdateView
 )
 
 urlpatterns = [
@@ -22,44 +30,84 @@ urlpatterns = [
         name="index"
     ),
     path(
-        "cooks/",
+        "cook/",
         CookListView.as_view(),
         name="cook-list"
     ),
     path(
-        "cooks/<int:pk>",
+        "cook/<int:pk>/",
         CookDetailView.as_view(),
         name="cook-detail"
     ),
     path(
-        "dishes/",
+        "dish/",
         DishListView.as_view(),
-        name="dishes-list"
+        name="dish-list"
     ),
     path(
-        "dishes/<int:pk>",
+        "dish/<int:pk>/",
         DishDetailView.as_view(),
         name="dish-detail"
     ),
     path(
-        "dish_types/",
+        "dish_type/",
         DishTypeListView.as_view(),
         name="dish-type-list"
     ),
     path(
-        "dish_types/<int:pk>/",
+        "dish_type/<int:pk>/",
         DishTypeDetailView.as_view(),
-        name="dish-types-detail"
+        name="dish-type-detail"
     ),
     path(
-        "ingredients/<int:pk>/",
+        "ingredient/<int:pk>/",
         IngredientDetailView.as_view(),
         name="ingredient-detail"
     ),
     path(
-        "ingredients/",
+        "ingredient/",
         IngredientListView.as_view(),
         name="ingredient-list"
+    ),
+    path(
+        "dish_type/<int:pk>/delete/",
+        DishTypeDeleteView.as_view(),
+        name="dish-type-delete"
+    ),
+    path(
+        "dish_type/<int:pk>/update/",
+        DishTypeUpdateView.as_view(),
+        name="dish-type-update"
+    ),
+    path(
+        "dish/<int:pk>/delete/",
+        DishDeleteView.as_view(),
+        name="dish-delete"
+    ),
+    path(
+        "dish/<int:pk>/update/",
+        DishUpdateView.as_view(),
+        name="dish-update"
+    ),
+    path(
+        "ingredient/<int:pk>/update/",
+        IngredientUpdateView.as_view(),
+        name="ingredient-update"
+    ),
+    path(
+        "ingredient/<int:pk>/delete/",
+        IngredientDeleteView.as_view(),
+        name="ingredient-delete"
+    ),
+    path(
+        "cook/<int:pk>/delete",
+        CookDeleteView.as_view(),
+        name="cook-delete"
+    ),
+    path(
+        "cook/<int:pk>/update",
+        CookUpdateView.as_view(),
+        name="cook-update"
     )
 ]
 

@@ -9,12 +9,10 @@
         <ul>
           <li>
             ({{ dish_type.id }})
-            <a href="{% url 'kitchen:dish-types-detail' pk=dish_type.id %}">
+            <a href="{% url 'kitchen:dish-type-detail' pk=dish_type.id %}">
               {{ dish_type.name }}
             </a>
           </li>
-          <li></li>
-          <li></li>
         </ul>
       {% endfor %}
     {% else %}

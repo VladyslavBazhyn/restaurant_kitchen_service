@@ -3,7 +3,10 @@
 <!--Name of dish_type it is in video-->
 <body>
   {% block content %}
-    <h2>List of all ingredients</h2>
+    <h2>
+      List of all ingredients
+      <a href="{% url 'kitchen:ingredient-create' %}" class="btn btn-primary link-to-page float-right">Add</a>
+    </h2>
     {% if ingredient_list %}
       {% for ingredient in ingredient_list %}
         <ul>
@@ -12,8 +15,8 @@
             <a href="{% url 'kitchen:ingredient-detail' pk=ingredient.id%}">
               {{ ingredient.name }}
             </a>
+            ({{ ingredient.price }})
           </li>
-          <li>Price: {{ ingredient.price }}</li>
         </ul>
       {% endfor %}
     {% else %}

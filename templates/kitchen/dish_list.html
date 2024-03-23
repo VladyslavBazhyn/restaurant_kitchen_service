@@ -3,7 +3,10 @@
 <!--Name of dish_type it is in video-->
 <body>
   {% block content %}
-    <h2>List of all dishes</h2>
+    <h2>
+      List of all dishes
+      <a href="{% url 'kitchen:dish-create' %}" class="btn btn-primary link-to-page float-right">Add</a>
+    </h2>
     {% if dish_list %}
       {% for dish in dish_list %}
         <ul>
@@ -12,9 +15,9 @@
             <a href="{% url 'kitchen:dish-detail' pk=dish.id%}">
               {{ dish.name }}
             </a>
+             / Type: {{ dish.dish_type.name }}
+             / Price: {{ dish.price }}
           </li>
-          <li>Type: {{ dish.dish_type.name }}</li>
-          <li>Price: {{ dish.price }}</li>
         </ul>
       {% endfor %}
     {% else %}

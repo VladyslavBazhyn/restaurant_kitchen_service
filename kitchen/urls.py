@@ -23,7 +23,8 @@ from kitchen.views import (
     IngredientListView,
     IngredientDetailView,
     IngredientDeleteView,
-    IngredientUpdateView, IngredientCreateView
+    IngredientUpdateView,
+    IngredientCreateView
 )
 
 urlpatterns = [
@@ -89,7 +90,7 @@ urlpatterns = [
     ),
     path(
         "dish_type/create/",
-        DishTypeCreateView.as_view,
+        DishTypeCreateView.as_view(),
         name="dish-type-create"
     ),
     path(

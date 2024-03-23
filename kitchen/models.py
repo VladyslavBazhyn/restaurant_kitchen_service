@@ -22,7 +22,7 @@ class Ingredient(models.Model):
 
 
 class Cook(AbstractUser):
-    years_of_experience = models.IntegerField(null=True)
+    years_of_experience = models.IntegerField()
     first_name = models.CharField(max_length=255)
     last_name = models.CharField(max_length=255)
 

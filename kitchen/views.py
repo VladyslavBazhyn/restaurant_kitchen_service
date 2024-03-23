@@ -126,10 +126,12 @@ class DishTypeCreateView(generic.CreateView):
 
 class CookDeleteView(generic.DeleteView):
     model = Cook
+    success_url = reverse_lazy("kitchen:cook-list")
 
 
 class CookUpdateView(generic.UpdateView):
     model = Cook
+    success_url = reverse_lazy("kitchen:cook-list")
 
 
 class CookCreateView(generic.CreateView):

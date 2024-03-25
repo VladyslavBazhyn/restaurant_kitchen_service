@@ -5,7 +5,7 @@
       <li class="page-item">
         <a href="?{% query_transform request page=page_obj.previous_page_number %}"
            class="page-link">
-          prev
+          <-
         </a>
       </li>
     {% endif %}
@@ -18,7 +18,7 @@
       <li class="page-item">
         <a href="?{% query_transform request page=page_obj.next_page_number %}"
            class="page-link">
-          next
+          ->
         </a>
       </li>
     {% endif %}

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+  {% if dish in user.dishes.all %}
+    <a href="{% url 'kitchen:toggle-dish-assign' pk=dish.id %}" class="btn btn-danger link-to-page">
+        Don't cooking it
+    </a>
+  {% else %}
+    <a href="{% url 'kitchen:toggle-dish-assign' pk=dish.id %}" class="btn btn-success link-to-page">
+        Cooking it
+    </a>
+  {% endif %}
+</body>
+</html>

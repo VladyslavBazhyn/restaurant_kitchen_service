@@ -4,4 +4,3 @@
 # assign to the dish
 # add list dishes with this ingredient to ingredient detail
 # templates for better visuality
-# bug with redirectin to logout when login - QnA on Monday

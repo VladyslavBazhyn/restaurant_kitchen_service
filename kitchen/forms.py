@@ -6,7 +6,6 @@ from django.core.exceptions import ValidationError
 from kitchen.models import (
     Ingredient,
     Dish,
-    DishType,
     Cook
 )
 
@@ -57,3 +56,47 @@ class DishUpdateForm(forms.ModelForm):
             "ingredients",
             "cooks"
         ]
+
+
+class CookSearchForm(forms.Form):
+    username = forms.CharField(
+        max_length=255,
+        required=False,
+        label="",
+        widget=forms.TextInput(
+            attrs={"placeholder": "Search by username"}
+        )
+    )
+
+
+class IngredientSearchForm(forms.Form):
+    name = forms.CharField(
+        max_length=255,
+        required=False,
+        label="",
+        widget=forms.TextInput(
+            attrs={"placeholder": "Search by ingredient name"}
+        )
+    )
+
+
+class DishSearchForm(forms.Form):
+    name = forms.CharField(
+        max_length=255,
+        required=False,
+        label="",
+        widget=forms.TextInput(
+            attrs={"placeholder": "Search by dish name"}
+        )
+    )
+
+
+class DishTypeSearchForm(forms.Form):
+    name = forms.CharField(
+        max_length=255,
+        required=False,
+        label="",
+        widget=forms.TextInput(
+            attrs={"placeholder": "Search by dish type name"}
+        )
+    )

@@ -75,7 +75,7 @@ class IngredientSearchForm(forms.Form):
         required=False,
         label="",
         widget=forms.TextInput(
-            attrs={"placeholder": "Search by ingredient name"}
+            attrs={"placeholder": "Search by name"}
         )
     )
 

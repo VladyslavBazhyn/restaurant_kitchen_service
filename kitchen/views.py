@@ -39,12 +39,16 @@ def index(request):
         "num_visits": num_visits
     }
 
-    return render(request, "kitchen/index.html", context=context)
+    return render(
+        request,
+        "kitchen/index.html",
+        context=context
+    )
 
 
 class CookListView(LoginRequiredMixin, generic.ListView):
     model = Cook
-    paginate_by = 3
+    paginate_by = 10
     ordering = ["first_name", "last_name"]
 
     def get_context_data(self, *, object_list=None, **kwargs):
@@ -86,7 +90,7 @@ class DishListView(LoginRequiredMixin, generic.ListView):
         return context
 
     def get_queryset(self):
-        queryset = Dish.objects.all()
+        queryset = Dish.objects.select_related("dish_type").all()
         form = DishSearchForm(self.request.GET)
         if form.is_valid():
             return queryset.filter(

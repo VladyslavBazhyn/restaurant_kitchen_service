@@ -7,6 +7,7 @@
       List of all dishes
       <a href="{% url 'kitchen:dish-create' %}" class="btn btn-primary link-to-page float-right">Add</a>
     </h2>
+    {% include "includes/searching.html" %}
     {% if dish_list %}
       {% for dish in dish_list %}
         <ul>

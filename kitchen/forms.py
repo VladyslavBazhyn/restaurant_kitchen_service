@@ -1,7 +1,5 @@
 from django import forms
-from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import UserCreationForm
-from django.core.exceptions import ValidationError
 
 from kitchen.models import (
     Ingredient,
@@ -18,6 +16,23 @@ class CookCreationForm(UserCreationForm):
             "first_name",
             "last_name",
         )
+
+
+class CookUpdateForm(forms.ModelForm):
+    dishes = forms.ModelMultipleChoiceField(
+        queryset=Dish.objects.all(),
+        widget=forms.CheckboxSelectMultiple
+    )
+
+    class Meta:
+        model = Cook
+        fields = [
+            "username",
+            "first_name",
+            "last_name",
+            "years_of_experience",
+            "dishes"
+        ]
 
 
 class DishCreationForm(forms.ModelForm):

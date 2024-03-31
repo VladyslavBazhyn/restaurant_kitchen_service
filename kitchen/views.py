@@ -12,7 +12,8 @@ from kitchen.forms import (
     CookSearchForm,
     IngredientSearchForm,
     DishSearchForm,
-    DishTypeSearchForm
+    DishTypeSearchForm,
+    CookUpdateForm
 )
 
 from kitchen.models import (
@@ -41,7 +42,7 @@ def index(request):
 
     return render(
         request,
-        "kitchen/index.html",
+        "kitchen/custome-index.html",
         context=context
     )
 
@@ -221,6 +222,8 @@ class CookDeleteView(LoginRequiredMixin, generic.DeleteView):
 
 class CookUpdateView(LoginRequiredMixin, generic.UpdateView):
     model = Cook
+    form_class = CookUpdateForm
+    template_name = "kitchen/cook_update.html"
     success_url = reverse_lazy("kitchen:cook-list")
 
 

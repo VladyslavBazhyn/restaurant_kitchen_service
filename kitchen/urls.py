@@ -39,6 +39,11 @@ urlpatterns = [
         name="cook-create"
     ),
     path(
+        "cook/<int:pk>/update",
+        CookUpdateView.as_view(),
+        name="cook-update"
+    ),
+    path(
         "cook/",
         CookListView.as_view(),
         name="cook-list"

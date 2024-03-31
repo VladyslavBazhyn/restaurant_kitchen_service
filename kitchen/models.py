@@ -20,9 +20,12 @@ class Ingredient(models.Model):
     )
     best_before = models.DateField(null=True)
 
+    def __str__(self) -> str:
+        return f"{self.name} for {self.price} bought {self.bought_date}"
+
 
 class Cook(AbstractUser):
-    years_of_experience = models.IntegerField()
+    years_of_experience = models.IntegerField(null=True)
     first_name = models.CharField(max_length=255)
     last_name = models.CharField(max_length=255)
 

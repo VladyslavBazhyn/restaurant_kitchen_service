@@ -7,6 +7,7 @@
       List of all dish types
       <a href="{% url 'kitchen:dish-type-create' %}" class="btn btn-primary link-to-page float-right">Add</a>
     </h2>
+    {% include "includes/searching.html" %}
     {% if dish_type_list %}
       {% for dish_type in dish_type_list %}
         <ul>

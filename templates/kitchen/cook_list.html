@@ -5,8 +5,7 @@
     List of all cooks
     <a href="{% url 'kitchen:cook-create' %}" class="btn btn-primary link-to-page float-right">Add</a>
   </h2>
-
-
+  {% include "includes/searching.html" %}
   {% if cook_list %}
     <table class="table">
       <tr>

@@ -14,5 +14,17 @@
       <li>Description: {{ ingredient.description }}</li>
       <li>Best before: {{ ingredient.best_before }}</li>
     </ul>
+    <h5>All dishes with this ingredient:</h5>
+      <ul>
+        {% if ingredient.dishes.all %}
+          {% for dish in ingredient.dishes.all %}
+            <li>
+              <a href="{% url 'kitchen:dish-detail' pk=dish.id %}">{{ dish.name }}</a>
+            </li>
+          {% endfor %}
+        {% else %}
+          <p>There is no dishes with this ingredient</p>
+        {% endif %}
+      </ul>
   {% endblock %}
 </body>

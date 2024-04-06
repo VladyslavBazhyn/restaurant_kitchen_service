@@ -42,7 +42,7 @@ def index(request):
 
     return render(
         request,
-        "kitchen/custome-index.html",
+        "kitchen/index.html",
         context=context
     )
 

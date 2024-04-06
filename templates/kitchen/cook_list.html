@@ -1,31 +1,38 @@
 {% extends "base.html" %}
+{% load static %}
 
-{% block content %}
-  <h2>
-    List of all cooks
-    <a href="{% url 'kitchen:cook-create' %}" class="btn btn-primary link-to-page float-right">Add</a>
-  </h2>
-  {% include "includes/searching.html" %}
-  {% if cook_list %}
-    <table class="table">
-      <tr>
-        <th>ID</th>
-        <th>Username</th>
-        <th>First name</th>
-        <th>Last name</th>
-        <th>Years of experience</th>
-      </tr>
-      {% for cook in cook_list %}
-      <tr>
-        <td>{{ cook.id }}</td>
-        <td><a href="{{ cook.get_absolute_url }}">{{ cook.username }} {% if user == cook %} (Me){% endif %}</a></td>
-        <td>{{ cook.first_name }}</td>
-        <td>{{ cook.last_name }}</td>
-        <td>{{ cook.years_of_experience }}</td>
-      </tr>
-      {% endfor %}
-    </table>
-  {% else %}
-    <p>Now we don't have any cooks on our kitchen</p>
-  {% endif %}
-{% endblock %}
+<div class="container">
+   <div class="row">
+    {% block content %}
+
+       <h2>
+           List of all cooks
+           <a href="{% url 'kitchen:cook-create' %}" class="btn btn-primary link-to-page float-right">Add</a>
+       </h2>
+
+      {% include "includes/searching.html" %}
+      {% if cook_list %}
+        <table class="table">
+          <tr>
+            <th>ID</th>
+            <th>Username</th>
+            <th>First name</th>
+            <th>Last name</th>
+            <th>Years of experience</th>
+          </tr>
+          {% for cook in cook_list %}
+          <tr>
+            <td>{{ cook.id }}</td>
+            <td><a href="{{ cook.get_absolute_url }}">{{ cook.username }} {% if user == cook %} (Me){% endif %}</a></td>
+            <td>{{ cook.first_name }}</td>
+            <td>{{ cook.last_name }}</td>
+            <td>{{ cook.years_of_experience }}</td>
+          </tr>
+          {% endfor %}
+        </table>
+      {% else %}
+        <p>Now we don't have any cooks on our kitchen</p>
+      {% endif %}
+    {% endblock %}
+  </div>
+</div>

@@ -1,5 +1,7 @@
 {% extends 'layouts/base-presentation.html' %}
 
+{% load static %}
+
 {% block title %} Presentation {% endblock title %}
 
 <!-- Specific CSS goes HERE -->
@@ -573,9 +575,10 @@
                 </div>
                 <div class="tab-content tab-space">
                   <div class="tab-pane active" id="preview-btn-icon">
-                    <iframe width="100%" height="100px" srcdoc='<!doctype html><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+                    <iframe width="100%" height="100px" srcdoc='<!doctype html><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">'>
           <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
           <!-- Nucleo Icons -->
+        
           <link href="{{ ASSETS_ROOT }}/css/nucleo-icons.css" rel="stylesheet" />
           <link href="{{ ASSETS_ROOT }}/css/nucleo-svg.css" rel="stylesheet" /><link href="https://unpkg.com/soft-ui-design-system@1.0.1/assets/css/soft-design-system.min.css" rel="stylesheet" /><div class="row text-center py-2 mt-3">
   <div class="col-12 mx-auto">

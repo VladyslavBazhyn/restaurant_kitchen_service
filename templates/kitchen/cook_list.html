@@ -9,14 +9,16 @@
           <div class="container border-bottom">
             <div class="row justify-space-between py-2">
 
-              {% include "includes/searching.html" %}
-
               <section class="pt-3 pb-4 text-center" id="count-stats">
                 <h2>
                   List of all cooks
                 </h2>
               </section>
-              <a href="{% url 'kitchen:cook-create' %}" class="btn btn-primary link-to-page float-right">Add</a>
+
+              <a href="{% url 'kitchen:cook-create' %}" class="btn btn-primary link-to-page">Add</a>
+
+              {% include "includes/searching.html" %}
+
               {% if cook_list %}
                 <table class="table">
                   <tr>

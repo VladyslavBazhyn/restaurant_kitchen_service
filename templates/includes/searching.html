@@ -1,13 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-  <form action="" method="get" class="form-inline">
-    {{ search_form.as_p }}
-    <input type="submit" value="🙈" class="btn btn-secondary">
-  </form>
-</body>
-</html>
+{% load crispy_forms_tags %}
+
+
+<div class="row text-center py-2 mt-3">
+  <div class="col-4 mx-auto">
+    <div class="input-group mb-4">
+      <form action="" method="get" class="form-inline input-group-text">
+        {{ search_form.as_p }}
+        <input type="submit" value="🔎" class="btn btn-info">
+      </form>
+    </div>
+  </div>
+</div>

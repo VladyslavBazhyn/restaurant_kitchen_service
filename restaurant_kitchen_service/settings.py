@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     "kitchen",
     "debug_toolbar",
     "theme_soft_design",
+    "crispy_forms",
 ]
 
 MIDDLEWARE = [
@@ -143,3 +144,5 @@ ASSETS_ROOT = "/static"
 AUTH_USER_MODEL = "kitchen.Cook"
 
 LOGIN_REDIRECT_URL = "/"
+
+CRISPY_TEMPLATE_PACK = "bootstrap4"

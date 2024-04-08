@@ -1,38 +1,47 @@
 {% extends "base.html" %}
 {% load static %}
 
-<div class="container">
-   <div class="row">
-    {% block content %}
+  {% block content %}
 
-       <h2>
-           List of all cooks
-           <a href="{% url 'kitchen:cook-create' %}" class="btn btn-primary link-to-page float-right">Add</a>
-       </h2>
+    <div class="row mt-3">
+      <div class="col-12">
+        <div class="position-relative border-radius-xl overflow-hidden shadow-lg mb-7">
+          <div class="container border-bottom">
+            <div class="row justify-space-between py-2">
 
-      {% include "includes/searching.html" %}
-      {% if cook_list %}
-        <table class="table">
-          <tr>
-            <th>ID</th>
-            <th>Username</th>
-            <th>First name</th>
-            <th>Last name</th>
-            <th>Years of experience</th>
-          </tr>
-          {% for cook in cook_list %}
-          <tr>
-            <td>{{ cook.id }}</td>
-            <td><a href="{{ cook.get_absolute_url }}">{{ cook.username }} {% if user == cook %} (Me){% endif %}</a></td>
-            <td>{{ cook.first_name }}</td>
-            <td>{{ cook.last_name }}</td>
-            <td>{{ cook.years_of_experience }}</td>
-          </tr>
-          {% endfor %}
-        </table>
-      {% else %}
-        <p>Now we don't have any cooks on our kitchen</p>
-      {% endif %}
-    {% endblock %}
-  </div>
-</div>
+              {% include "includes/searching.html" %}
+
+              <section class="pt-3 pb-4 text-center" id="count-stats">
+                <h2>
+                  List of all cooks
+                </h2>
+              </section>
+              <a href="{% url 'kitchen:cook-create' %}" class="btn btn-primary link-to-page float-right">Add</a>
+              {% if cook_list %}
+                <table class="table">
+                  <tr>
+                    <th>ID</th>
+                    <th>Username</th>
+                    <th>First name</th>
+                    <th>Last name</th>
+                    <th>Years of experience</th>
+                  </tr>
+                  {% for cook in cook_list %}
+                  <tr>
+                    <td>{{ cook.id }}</td>
+                    <td><a href="{{ cook.get_absolute_url }}">{{ cook.username }} {% if user == cook %} (Me){% endif %}</a></td>
+                    <td>{{ cook.first_name }}</td>
+                    <td>{{ cook.last_name }}</td>
+                    <td>{{ cook.years_of_experience }}</td>
+                  </tr>
+                  {% endfor %}
+                </table>
+            {% else %}
+                <p>Now we don't have any cooks on our kitchen</p>
+            {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  {% endblock %}

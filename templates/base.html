@@ -43,11 +43,15 @@ Coded by www.creative-tim.com
 
 <body class="{% block body_class %}{% endblock body_class %}">
 
+    {% load static %}
+
     {% include "includes/navigation.html" %}
 
-    {% include "includes/pagination.html" %}
+    {% include "includes/background.html" %}
 
     {% block content %}{% endblock content %}
+
+    {% include "includes/pagination.html" %}
 
     {% include "includes/footer.html" %}
 

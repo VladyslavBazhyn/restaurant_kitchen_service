@@ -1,26 +1,84 @@
 {% extends "base.html" %}
 
 <body>
-
   {% block content %}
-    <h3>Detail information about {{ dish.name }}</h3>
-  <h5><strong>Dish type:</strong> {{ dish.dish_type }}
-      {% include "includes/assign.html" %}
-      <a href="{% url 'kitchen:dish-delete' pk=dish.id %}" class="btn btn-danger link-to-page float-right">
-        Delete
-      </a>
-      <a href="{% url 'kitchen:dish-update' pk=dish.id %}" class="btn btn-secondary link-to-page float-right">
-        Update
-      </a>
-    </h5>
-
-    <h5><strong>Description:</strong></h5>
-      <p>{{ dish.description }}</p>
-    <h5><strong>Ingredients:</strong></h5>
-      <ul>
-        {% for ingredient in dish.ingredients.all %}
-          <li><a href="{% url 'kitchen:ingredient-detail' pk=ingredient.id %}">{{ ingredient.name }}</a></li>
-        {% endfor %}
-      </ul>
+    <div class="row mt-2">
+      <div class="col-12">
+        <div class="position-relative border-radius-xl overflow-hidden shadow-lg mb-2">
+          <div class="container border-bottom">
+            <div class="row justify-space-between py-2">
+              <section class="pt-3 pb-4 text-center" id="count-stats">
+                <h3>Detail information about {{ dish.name }}</h3>
+                  {% include "includes/assign.html" %}
+                  <a href="{% url 'kitchen:dish-delete' pk=dish.id %}" class="btn btn-danger link-to-page float-right">
+                    Delete
+                  </a>
+                  <a href="{% url 'kitchen:dish-update' pk=dish.id %}" class="btn btn-secondary link-to-page float-right">
+                    Update
+                  </a>
+              </section>
+              <ul class="table">
+                <li>
+                  <div class="row mt-2">
+                    <div class="col-12">
+                      <div class="position-relative border-radius-xl overflow-hidden shadow-lg mb-2">
+                        <div class="container border-bottom">
+                          <div class="row justify-space-between py-2">
+                            <p>Dish type: <a href="{% url 'kitchen:dish-type-detail' pk=dish.dish_type.id %}">{{ dish.dish_type }}</a></p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <div class="row mt-2">
+                    <div class="col-12">
+                      <div class="position-relative border-radius-xl overflow-hidden shadow-lg mb-2">
+                        <div class="container border-bottom">
+                          <div class="row justify-space-between py-2">
+                            Description: {{ dish.description }}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+                 <li>
+                  <div class="row mt-2">
+                    <div class="col-12">
+                      <div class="position-relative border-radius-xl overflow-hidden shadow-lg mb-2">
+                        <div class="container border-bottom">
+                          <div class="row justify-space-between py-2">
+                            Ingredients:
+                              <ul>
+                                {% for ingredient in dish.ingredients.all %}
+                                  <li>
+                                    <div class="row mt-2">
+                                      <div class="col-12">
+                                        <div class="position-relative border-radius-xl overflow-hidden shadow-lg mb-2">
+                                          <div class="container border-bottom">
+                                            <div class="row justify-space-between py-2">
+                                              <a href="{% url 'kitchen:ingredient-detail' pk=ingredient.id %}">{{ ingredient.name }}</a>
+                                            </div>
+                                           </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </li>
+                                {% endfor %}
+                              </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                 </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   {% endblock %}
 </body>

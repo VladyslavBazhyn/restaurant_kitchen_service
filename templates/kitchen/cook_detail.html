@@ -2,29 +2,125 @@
 
 <body>
   {% block content %}
-    <h3>Detail information about {{ cook.username }}</h3>
-    <h5>Username: {{ cook.username }}
-      <a href="{% url 'kitchen:cook-update' pk=cook.id %}" class="btn btn-primary link-to-page float-right">
-        Update
-      </a>
-      <a href="{% url 'kitchen:cook-delete' pk=cook.id %}" class="btn btn-danger link-to-page float-right">
-        Delete
-      </a>
-    </h5>
+    <div class="row mt-2">
+      <div class="col-12">
+        <div class="position-relative border-radius-xl overflow-hidden shadow-lg mb-2">
+          <div class="container border-bottom">
+            <div class="row justify-space-between py-2">
+              <section class="pt-3 pb-4 text-center" id="count-stats">
+                <h2>Detail information about cook</h2>
+                <a href="{% url 'kitchen:cook-update' pk=cook.id %}" class="btn btn-primary link-to-page float-right">
+                  Update
+                </a>
+                <a href="{% url 'kitchen:cook-delete' pk=cook.id %}" class="btn btn-danger link-to-page float-right">
+                  Delete
+                </a>
+              </section>
 
-    <h5><strong>First name:</strong> {{ cook.first_name }}</h5>
-    <h5><strong>Last name:</strong> {{ cook.last_name }}</h5>
-    <h5><strong>Years of experience:</strong> {{ cook.years_of_experience }}</h5>
-    <h5><strong>Is staff:</strong> {% if cook.is_staff %} Yes {% else %} No {% endif %}</h5>
-    <h5>Dishes which<strong> {{ cook.first_name }} {{ cook.last_name }} </strong>can cook:</h5>
-      {% if cook.dishes.all %}
-        {% for dish in cook.dishes.all %}
-          <hr>
-          <p>Name: <a href="{% url 'kitchen:dish-detail' pk=dish.id %}">{{ dish.name }}</a></p>
-          <p>Description: {{ dish.description }}</p>
-        {% endfor %}
-      {% else %}
-        <p>This cook can't make dishes now</p>
-      {% endif %}
+              <ul class="table">
+                  <li>
+                    <div class="row mt-2">
+                      <div class="col-12">
+                        <div class="position-relative border-radius-xl overflow-hidden shadow-lg mb-2">
+                          <div class="container border-bottom">
+                            <div class="row justify-space-between py-2">
+                              Username: {{ cook.username }}
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="row mt-2">
+                      <div class="col-12">
+                        <div class="position-relative border-radius-xl overflow-hidden shadow-lg mb-2">
+                          <div class="container border-bottom">
+                            <div class="row justify-space-between py-2">
+                              First name: {{ cook.first_name }}
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="row mt-2">
+                      <div class="col-12">
+                        <div class="position-relative border-radius-xl overflow-hidden shadow-lg mb-2">
+                          <div class="container border-bottom">
+                            <div class="row justify-space-between py-2">
+                              Last name: {{ cook.last_name }}
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="row mt-2">
+                      <div class="col-12">
+                        <div class="position-relative border-radius-xl overflow-hidden shadow-lg mb-2">
+                          <div class="container border-bottom">
+                            <div class="row justify-space-between py-2">
+                              Is stuff: {% if cook.is_staff %} Yes {% else %} No {% endif %}
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="row mt-2">
+                      <div class="col-12">
+                        <div class="position-relative border-radius-xl overflow-hidden shadow-lg mb-2">
+                          <div class="container border-bottom">
+                            <div class="row justify-space-between py-2">
+                              Years of experience: {{ cook.years_of_experience }}
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="row mt-2">
+                      <div class="col-12">
+                        <div class="position-relative border-radius-xl overflow-hidden shadow-lg mb-2">
+                          <div class="container border-bottom">
+                            <div class="row justify-space-between py-2">
+                              Dishes which  {{ cook.first_name }} {{ cook.last_name }} can cook:
+                              {% if cook.dishes.all %}
+                                {% for dish in cook.dishes.all %}
+                                  <div class="row mt-2">
+                                    <div class="col-12">
+                                      <div class="position-relative border-radius-xl overflow-hidden shadow-lg mb-2">
+                                        <div class="container border-bottom">
+                                          <div class="row justify-space-between py-2">
+                                            <hr>
+                                            <p>Name: <a href="{% url 'kitchen:dish-detail' pk=dish.id %}">{{ dish.name }}</a></p>
+                                            <p>Description: {{ dish.description }}</p>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                {% endfor %}
+                              {% else %}
+                                <p>This cook can't make dishes now</p>
+                              {% endif %}
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
   {% endblock %}
 </body>

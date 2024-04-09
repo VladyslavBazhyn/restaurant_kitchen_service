@@ -2,7 +2,6 @@
 {% load static %}
 
   {% block content %}
-
     <div class="row mt-3">
       <div class="col-12">
         <div class="position-relative border-radius-xl overflow-hidden shadow-lg mb-7">
@@ -29,18 +28,78 @@
                     <th>Years of experience</th>
                   </tr>
                   {% for cook in cook_list %}
-                  <tr>
-                    <td>{{ cook.id }}</td>
-                    <td><a href="{{ cook.get_absolute_url }}">{{ cook.username }} {% if user == cook %} (Me){% endif %}</a></td>
-                    <td>{{ cook.first_name }}</td>
-                    <td>{{ cook.last_name }}</td>
-                    <td>{{ cook.years_of_experience }}</td>
-                  </tr>
+                    <tr>
+                      <td>
+                        <div class="row mt-3">
+                          <div class="col-12">
+                            <div class="position-relative border-radius-xl overflow-hidden shadow-lg mb-3">
+                              <div class="container border-bottom">
+                                <div class="row justify-space-between py-2">
+                                  {{ cook.id }}
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </td>
+                      <td>
+                        <div class="row mt-3">
+                        <div class="col-12">
+                          <div class="position-relative border-radius-xl overflow-hidden shadow-lg mb-3">
+                            <div class="container border-bottom">
+                              <div class="row justify-space-between py-2">
+                                <a href="{{ cook.get_absolute_url }}">{{ cook.username }} {% if user == cook %} (Me){% endif %}</a>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        </div>
+                      </td>
+                      <td>
+                        <div class="row mt-3">
+                          <div class="col-12">
+                            <div class="position-relative border-radius-xl overflow-hidden shadow-lg mb-3">
+                              <div class="container border-bottom">
+                                <div class="row justify-space-between py-2">
+                                  {{ cook.first_name }}
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </td>
+                      <td>
+                        <div class="row mt-3">
+                          <div class="col-12">
+                            <div class="position-relative border-radius-xl overflow-hidden shadow-lg mb-3">
+                              <div class="container border-bottom">
+                                <div class="row justify-space-between py-2">
+                                  {{ cook.last_name }}
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </td>
+                      <td>
+                        <div class="row mt-3">
+                          <div class="col-12">
+                            <div class="position-relative border-radius-xl overflow-hidden shadow-lg mb-3">
+                              <div class="container border-bottom">
+                                <div class="row justify-space-between py-2">
+                                  {{ cook.years_of_experience }}
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
                   {% endfor %}
                 </table>
-            {% else %}
+              {% else %}
                 <p>Now we don't have any cooks on our kitchen</p>
-            {% endif %}
+              {% endif %}
             </div>
           </div>
         </div>

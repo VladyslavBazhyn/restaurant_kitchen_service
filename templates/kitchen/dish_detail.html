@@ -24,7 +24,7 @@
                       <div class="position-relative border-radius-xl overflow-hidden shadow-lg mb-2">
                         <div class="container border-bottom">
                           <div class="row justify-space-between py-2">
-                            Dish type: {{ dish.dish_type }}
+                            <p>Dish type: <a href="{% url 'kitchen:dish-type-detail' pk=dish.dish_type.id %}">{{ dish.dish_type }}</a></p>
                           </div>
                         </div>
                       </div>

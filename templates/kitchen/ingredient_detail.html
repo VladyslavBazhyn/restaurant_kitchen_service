@@ -2,29 +2,99 @@
 
 <body>
   {% block content %}
-  <h2>Ingredient <strong>{{ ingredient.name }}</strong> from <strong>{{ ingredient.bought_date }}</strong></h2>
-    <a href="{% url 'kitchen:ingredient-delete' pk=ingredient.id %}" class="btn btn-danger link-to-page float-right">
-        Delete
-    </a>
-    <a href="{% url 'kitchen:ingredient-update' pk=ingredient.id %}" class="btn btn-secondary link-to-page float-right">
-        Update
-    </a>
-    <ul>
-      <li>Price: {{ ingredient.price }}</li>
-      <li>Description: {{ ingredient.description }}</li>
-      <li>Best before: {{ ingredient.best_before }}</li>
-    </ul>
-    <h5>All dishes with this ingredient:</h5>
-      <ul>
-        {% if ingredient.dishes.all %}
-          {% for dish in ingredient.dishes.all %}
-            <li>
-              <a href="{% url 'kitchen:dish-detail' pk=dish.id %}">{{ dish.name }}</a>
-            </li>
-          {% endfor %}
-        {% else %}
-          <p>There is no dishes with this ingredient</p>
-        {% endif %}
-      </ul>
+  <div class="row mt-2">
+    <div class="col-12">
+      <div class="position-relative border-radius-xl overflow-hidden shadow-lg mb-2">
+        <div class="container border-bottom">
+          <div class="row justify-space-between py-2">
+            <section class="pt-3 pb-4 text-center" id="count-stats">
+              <h2>Ingredient <strong>{{ ingredient.name }}</strong> from <strong>{{ ingredient.bought_date }}</strong></h2>
+              <a href="{% url 'kitchen:ingredient-delete' pk=ingredient.id %}" class="btn btn-danger link-to-page float-right">
+                Delete
+              </a>
+              <a href="{% url 'kitchen:ingredient-update' pk=ingredient.id %}" class="btn btn-secondary link-to-page float-right">
+                Update
+              </a>
+            </section>
+            <ul>
+              <li>
+                <div class="row mt-2">
+                  <div class="col-12">
+                    <div class="position-relative border-radius-xl overflow-hidden shadow-lg mb-2">
+                      <div class="container border-bottom">
+                        <div class="row justify-space-between py-2">
+                          Price: {{ ingredient.price }}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li>
+                <div class="row mt-2">
+                  <div class="col-12">
+                    <div class="position-relative border-radius-xl overflow-hidden shadow-lg mb-2">
+                      <div class="container border-bottom">
+                        <div class="row justify-space-between py-2">
+                          Description: {{ ingredient.description }}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li>
+                <div class="row mt-2">
+                  <div class="col-12">
+                    <div class="position-relative border-radius-xl overflow-hidden shadow-lg mb-2">
+                      <div class="container border-bottom">
+                        <div class="row justify-space-between py-2">
+                          Best before: {{ ingredient.best_before }}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li>
+                <div class="row mt-2">
+                  <div class="col-12">
+                    <div class="position-relative border-radius-xl overflow-hidden shadow-lg mb-2">
+                      <div class="container border-bottom">
+                        <div class="row justify-space-between py-2">
+                          All dishes with this ingredient:
+                          <ul>
+                            {% if ingredient.dishes.all %}
+                              {% for dish in ingredient.dishes.all %}
+                                <li>
+                                  <div class="row mt-2">
+                                    <div class="col-12">
+                                      <div class="position-relative border-radius-xl overflow-hidden shadow-lg mb-2">
+                                        <div class="container border-bottom">
+                                          <div class="row justify-space-between py-2">
+                                            <a style="text-align: center;" href="{% url 'kitchen:dish-detail' pk=dish.id %}">{{ dish.name }}</a>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </li>
+                              {% endfor %}
+                            {% else %}
+                              <p>There is no dishes with this ingredient</p>
+                            {% endif %}
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+          </div>
+        </div>
+      </div>
   {% endblock %}
 </body>

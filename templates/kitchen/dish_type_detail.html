@@ -2,27 +2,57 @@
 
 <body>
   {% block content %}
-    <h3>Detail information about <strong>{{ dish_type_detail.name }}</strong> dish type</h3>
-    <a href="{% url 'kitchen:dish-type-delete' pk=dish_type_detail.id %}" class="btn btn-danger link-to-page float-right">
-        Delete
-    </a>
-    <a href="{% url 'kitchen:dish-type-update' pk=dish_type_detail.id %}" class="btn btn-secondary link-to-page float-right">
-        Update
-    </a>
-
-    <h5><strong>All dishes this type:</strong></h5>
-      {% if dish_type_detail.dish_set.all %}
-        <ul>
-          {% for dish in dish_type_detail.dish_set.all %}
-            <p>
-              <a href="{% url 'kitchen:dish-detail' pk=dish.id %}">
-                 {{ dish.name }}
-              </a>
-            </p>
-          {% endfor %}
-        </ul>
-      {% else %}
-        <p>Now we don't have any dishes of this type on our kitchen</p>
-      {% endif %}
+    <div class="row mt-2">
+      <div class="col-12">
+        <div class="position-relative border-radius-xl overflow-hidden shadow-lg mb-2">
+          <div class="container border-bottom">
+            <div class="row justify-space-between py-2">
+              <section class="pt-3 pb-4 text-center" id="count-stats">
+                <h2>Detail information about <strong>{{ dish_type_detail.name }}</strong> dish type</h2>
+                <a href="{% url 'kitchen:dish-type-delete' pk=dish_type_detail.id %}" class="btn btn-danger link-to-page float-right">
+                  Delete
+                </a>
+                <a href="{% url 'kitchen:dish-type-update' pk=dish_type_detail.id %}" class="btn btn-secondary link-to-page float-right">
+                  Update
+                </a>
+              </section>
+              <div class="row mt-2">
+                <div class="col-12">
+                  <div class="position-relative border-radius-xl overflow-hidden shadow-lg mb-2">
+                    <div class="container border-bottom">
+                      <div class="row justify-space-between py-2">
+                        All dishes this type:
+                        {% if dish_type_detail.dish_set.all %}
+                        {% for dish in dish_type_detail.dish_set.all %}
+                        <div class="row mt-2">
+                          <div class="col-12">
+                            <div class="position-relative border-radius-xl overflow-hidden shadow-lg mb-2">
+                              <div class="container border-bottom">
+                                <div class="row justify-space-between py-2">
+                                  <hr>
+                                  <p style="text-align: center;">
+                                    <a href="{% url 'kitchen:dish-detail' pk=dish.id %}">
+                                      {{ dish.name }}
+                                    </a>
+                                  </p>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        {% endfor %}
+                        {% else %}
+                        <p>Now we don't have any dishes of this type on our kitchen</p>
+                        {% endif %}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   {% endblock %}
 </body>

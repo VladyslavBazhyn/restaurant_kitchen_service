@@ -13,7 +13,7 @@ from kitchen.forms import (
     IngredientSearchForm,
     DishSearchForm,
     DishTypeSearchForm,
-    CookUpdateForm
+    CookUpdateForm,
 )
 
 from kitchen.models import (
@@ -232,23 +232,31 @@ class CookCreateView(LoginRequiredMixin, generic.CreateView):
     form_class = CookCreationForm
 
 
-@login_required
-def toggle_assign_to_dish(
-    request: HttpRequest,
-    pk: int
-) -> HttpResponseRedirect:
+class CookAssignDish(LoginRequiredMixin, generic.UpdateView):
+    model = Dish
+    fields = ["cooks"]
 
-    cook = Cook.objects.get(id=request.user.id)
-    if (
-        Dish.objects.get(id=pk) in cook.dishes.all()
-    ):
-        cook.dishes.remove(pk)
-    else:
-        cook.dishes.add(pk)
+    def get(
+            self,
+            request: HttpRequest,
+            *args,
+            **kwargs
+    ) -> HttpResponseRedirect:
 
-    return HttpResponseRedirect(
-        reverse_lazy(
-            "kitchen:dish-detail",
-            args=[pk]
+        cook = Cook.objects.get(id=request.user.id)
+        dish = self.model
+        pk = kwargs["pk"]
+
+        if (
+            dish.objects.get(id=pk) in cook.dishes.all()
+        ):
+            cook.dishes.remove(pk)
+        else:
+            cook.dishes.add(pk)
+
+        return HttpResponseRedirect(
+            reverse_lazy(
+                "kitchen:dish-detail",
+                args=[pk]
+            )
         )
-    )

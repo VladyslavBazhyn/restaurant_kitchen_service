@@ -17,8 +17,9 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # Now you can access environment variables like this:
-SECRET_KEY = os.getenv("SECRET_KEY")
-DEBUG = os.getenv("DEBUG") == "True"
+SECRET_KEY = "django-insecure-3=!y6weg%4_kz(c)m!xmjg#)j=u85j70$a9)9k$^3^w!=^74l*"
+
+DEBUG = True
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 

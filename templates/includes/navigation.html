@@ -189,26 +189,26 @@
                 <li class="nav-item ms-lg-auto"></li>
                 <li class="nav-item my-auto ms-3 ms-lg-0">
                   {% if user.is_authenticated %}
-                      <form action="{% url 'kitchen:cook-detail' pk=user.id %}" method="post" class="btn">
-                        {% csrf_token %}
-                        <a class="nav-link nav-link-icon me-2" href="{% url 'kitchen:cook-detail' pk=user.id %}">
-                          <p class="d-inline text-sm z-index-1 font-weight-bold" data-bs-toggle="tooltip" data-bs-placement="bottom" title="{{ user.get_username }} detail">{{ user.get_username }}</p>
-                        </a>
-                      </form>
-                      <form action="{% url 'logout' %}" method="post" class="btn">
-                        {% csrf_token %}
-                        <button type="submit" class="badge bg-gradient-light text-dark">
-                          <i class="fa fa-sign-out me-1"></i>
-                          <p class="d-inline text-sm z-index-1 font-weight-bold" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Logout">Logout</p>
-                        </button>
-                      </form>
+                  <form action="{% url 'kitchen:cook-detail' pk=user.id %}" method="post" class="btn">
+                    {% csrf_token %}
+                    <a class="nav-link nav-link-icon me-2" href="{% url 'kitchen:cook-detail' pk=user.id %}">
+                      <p class="d-inline text-sm z-index-1 font-weight-bold" data-bs-toggle="tooltip" data-bs-placement="bottom" title="{{ user.get_username }} detail">{{ user.get_username }}</p>
+                    </a>
+                  </form>
+                  <form action="{% url 'logout' %}" method="post" class="btn">
+                    {% csrf_token %}
+                    <button type="submit" class="badge bg-gradient-light text-dark">
+                      <i class="fa fa-sign-out me-1"></i>
+                      <p class="d-inline text-sm z-index-1 font-weight-bold" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Logout">Logout</p>
+                    </button>
+                  </form>
                   {% else %}
-                    {% if next %}
-                      <li class="btn btn-sm  bg-gradient-primary btn-round mb-0 me-1 mt-2 mt-md-0"><a href="{% url 'login' %}?next={{ next }}">Login</a> </li>
-                    {% else %}
-                      <li class="btn btn-sm  bg-gradient-primary btn-round mb-0 me-1 mt-2 mt-md-0"><a href="{% url 'login' %}">Login</a> </li>
-                    {% endif %}
+                  {% if next %}
+                    <li class="btn btn-sm  bg-gradient-primary btn-round mb-0 me-1 mt-2 mt-md-0"><a href="{% url 'login' %}?next={{ next }}">Login</a> </li>
+                  {% else %}
+                    <li class="btn btn-sm  bg-gradient-primary btn-round mb-0 me-1 mt-2 mt-md-0"><a href="{% url 'login' %}">Login</a> </li>
                   {% endif %}
+                {% endif %}
                 </li>
               </div>
             </div>

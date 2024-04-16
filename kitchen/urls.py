@@ -5,6 +5,7 @@ from django.urls import path, include
 
 from kitchen.views import (
     index,
+    CookAssignDish,
     CookListView,
     CookDetailView,
     CookDeleteView,
@@ -24,7 +25,7 @@ from kitchen.views import (
     IngredientDetailView,
     IngredientDeleteView,
     IngredientUpdateView,
-    IngredientCreateView, toggle_assign_to_dish
+    IngredientCreateView
 )
 
 urlpatterns = [
@@ -140,7 +141,7 @@ urlpatterns = [
     ),
     path(
         "dish/<int:pk>/toggle-assign/",
-        toggle_assign_to_dish,
+        CookAssignDish.as_view(),
         name="toggle-dish-assign"
     )
 ]

@@ -17,21 +17,18 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # Now you can access environment variables like this:
-SECRET_KEY = "django-insecure-3=!y6weg%4_kz(c)m!xmjg#)j=u85j70$a9)9k$^3^w!=^74l*"
+SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY", "django-insecure-3=!y6weg%4_kz(c)m!xmjg#)j=u85j70$a9)9k$^3^w!=^74l*")
 
-DEBUG = True
-
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
-
-
-BASE_DIR = Path(__file__).resolve().parent.parent
-
+DEBUG = os.environ.get("DJANGO_DEBUG", "") != "False"
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["127.0.0.1"]
 
+# Build paths inside the project like this: BASE_DIR / 'subdir'.
+
+BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Application definition
 
@@ -82,7 +79,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'restaurant_kitchen_service.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
@@ -96,7 +92,6 @@ DATABASES = {
 INTERNAL_IPS = [
     "127.0.0.1"
 ]
-
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
@@ -116,7 +111,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
 
@@ -127,7 +121,6 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/

@@ -19,7 +19,7 @@ load_dotenv()
 # Now you can access environment variables like this:
 SECRET_KEY = os.environ["DJANGO_SECRET_KEY"]
 
-DEBUG = "RENDER" not in os.environ
+DEBUG = os.environ.get("DJANGO_DEBUG", "") != False
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
@@ -88,13 +88,14 @@ DATABASES = {
         "NAME": "kitchen_db",
         "USER": "gibbs",
         "PASSWORD": "greATparol1!",
-        "HOST": "database-1.cr86koiou84h.eu-west-2.rds.amazonaws.com",
+        "HOST": "dbkitchen.c7w284y6yv4r.us-east-1.rds.amazonaws.com",
         "PORT": "5432"
     }
 }
 
 INTERNAL_IPS = [
-    "127.0.0.1"
+    "127.0.0.1",
+    "https://restaurant-kitchen-service-i93p.onrender.com/"
 ]
 
 # Password validation

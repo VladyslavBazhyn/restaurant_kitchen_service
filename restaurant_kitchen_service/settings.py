@@ -17,9 +17,9 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # Now you can access environment variables like this:
-SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY", "dmjSxD5CLUECz94eA4yJfWLG5TXzxRHGWBbpGAPA53ZnvbV4hYhAFpxzghCgFR3R")
+SECRET_KEY = os.environ["DJANGO_SECRET_KEY"]
 
-DEBUG = os.environ.get("DJANGO_DEBUG", "") != "False"
+DEBUG = "RENDER" not in os.environ
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/

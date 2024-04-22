@@ -17,7 +17,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # Now you can access environment variables like this:
-SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY", "django-insecure-3=!y6weg%4_kz(c)m!xmjg#)j=u85j70$a9)9k$^3^w!=^74l*")
+SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY", "dmjSxD5CLUECz94eA4yJfWLG5TXzxRHGWBbpGAPA53ZnvbV4hYhAFpxzghCgFR3R")
 
 DEBUG = os.environ.get("DJANGO_DEBUG", "") != "False"
 
@@ -145,3 +145,15 @@ AUTH_USER_MODEL = "kitchen.Cook"
 LOGIN_REDIRECT_URL = "/"
 
 CRISPY_TEMPLATE_PACK = "bootstrap4"
+
+SECURE_HSTS_SECONDS = "31536000"
+
+SESSION_COOKIE_SECURE = True
+
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+
+SECURE_SSL_REDIRECT = True
+
+CSRF_COOKIE_SECURE = True
+
+SECURE_HSTS_PRELOAD = True

@@ -17,21 +17,18 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # Now you can access environment variables like this:
-SECRET_KEY = "django-insecure-3=!y6weg%4_kz(c)m!xmjg#)j=u85j70$a9)9k$^3^w!=^74l*"
+SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY", "dmjSxD5CLUECz94eA4yJfWLG5TXzxRHGWBbpGAPA53ZnvbV4hYhAFpxzghCgFR3R")
 
-DEBUG = True
-
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
-
-
-BASE_DIR = Path(__file__).resolve().parent.parent
-
+DEBUG = os.environ.get("DJANGO_DEBUG", "") != "False"
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["127.0.0.1"]
 
+# Build paths inside the project like this: BASE_DIR / 'subdir'.
+
+BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Application definition
 
@@ -82,21 +79,23 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'restaurant_kitchen_service.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+    "default": {
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": "kitchen_db",
+        "USER": "gibbs",
+        "PASSWORD": "greATparol1!",
+        "HOST": "database-1.cr86koiou84h.eu-west-2.rds.amazonaws.com",
+        "PORT": "5432"
     }
 }
 
 INTERNAL_IPS = [
     "127.0.0.1"
 ]
-
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
@@ -116,7 +115,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
 
@@ -127,7 +125,6 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
@@ -148,3 +145,15 @@ AUTH_USER_MODEL = "kitchen.Cook"
 LOGIN_REDIRECT_URL = "/"
 
 CRISPY_TEMPLATE_PACK = "bootstrap4"
+
+SECURE_HSTS_SECONDS = "31536000"
+
+SESSION_COOKIE_SECURE = True
+
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+
+SECURE_SSL_REDIRECT = True
+
+CSRF_COOKIE_SECURE = True
+
+SECURE_HSTS_PRELOAD = True

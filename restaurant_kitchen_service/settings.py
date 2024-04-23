@@ -24,7 +24,10 @@ DEBUG = os.environ.get("DJANGO_DEBUG", "") != False
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
-ALLOWED_HOSTS = ["127.0.0.1"]
+ALLOWED_HOSTS = [
+    "127.0.0.1",
+    "https://restaurant-kitchen-service-i93p.onrender.com/"
+]
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 
@@ -86,16 +89,22 @@ DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
         "NAME": "kitchen_db",
-        "USER": "gibbs",
-        "PASSWORD": "greATparol1!",
-        "HOST": "dbkitchen.c7w284y6yv4r.us-east-1.rds.amazonaws.com",
-        "PORT": "5432"
+        "USER": os.environ.get("USER"),
+        "PASSWORD": os.environ.get("PASSWORD"),
+        "HOST": os.environ.get("HOST"),
+        "PORT": os.environ.get("PORT")
     }
 }
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
 INTERNAL_IPS = [
-    "127.0.0.1",
-    "https://restaurant-kitchen-service-i93p.onrender.com/"
+    "127.0.0.1"
 ]
 
 # Password validation
@@ -152,8 +161,6 @@ SECURE_HSTS_SECONDS = "31536000"
 SESSION_COOKIE_SECURE = True
 
 SECURE_HSTS_INCLUDE_SUBDOMAINS = True
-
-SECURE_SSL_REDIRECT = True
 
 CSRF_COOKIE_SECURE = True
 

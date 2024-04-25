@@ -26,7 +26,7 @@ DEBUG = os.environ.get("DJANGO_DEBUG", "") != False
 
 ALLOWED_HOSTS = [
     "127.0.0.1",
-    "https://restaurant-kitchen-service-i93p.onrender.com/"
+    "https://restaurant-kitchen-service-i93p.onrender.com",
 ]
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -92,19 +92,12 @@ DATABASES = {
         "USER": os.environ.get("USER"),
         "PASSWORD": os.environ.get("PASSWORD"),
         "HOST": os.environ.get("HOST"),
-        # "PORT": os.environ.get("PORT")
+        "PORT": os.environ.get("PORT")
     }
 }
-# PY Flex
-# 18:12
-# https://docs.render.com/deploy-django#use-renderyaml-for-deploys
-# PY Flex
-# 18:16
-# https://docs.celeryq.dev/en/stable/getting-started/first-steps-with-celery.html#first-steps
-# PY Flex
-# 18:29
+
 # neon.tech
-# elephantsql
+
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.sqlite3',

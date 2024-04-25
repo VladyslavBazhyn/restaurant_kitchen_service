@@ -80,7 +80,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'restaurant_kitchen_service.wsgi.application'
+WSGI_APPLICATION = "restaurant_kitchen_service.wsgi.application"
 
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
@@ -92,10 +92,19 @@ DATABASES = {
         "USER": os.environ.get("USER"),
         "PASSWORD": os.environ.get("PASSWORD"),
         "HOST": os.environ.get("HOST"),
-        "PORT": os.environ.get("PORT")
+        # "PORT": os.environ.get("PORT")
     }
 }
-
+# PY Flex
+# 18:12
+# https://docs.render.com/deploy-django#use-renderyaml-for-deploys
+# PY Flex
+# 18:16
+# https://docs.celeryq.dev/en/stable/getting-started/first-steps-with-celery.html#first-steps
+# PY Flex
+# 18:29
+# neon.tech
+# elephantsql
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.sqlite3',

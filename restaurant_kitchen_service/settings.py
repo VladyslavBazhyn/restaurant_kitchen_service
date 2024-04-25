@@ -25,9 +25,12 @@ DEBUG = os.environ.get("DJANGO_DEBUG", "") != False
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 ALLOWED_HOSTS = [
-    "127.0.0.1",
-    "https://restaurant-kitchen-service-i93p.onrender.com",
+    "127.0.0.1"
 ]
+
+RENDER_EXTERNAL_HOSTNAME = os.environ.get("RENDER_EXTERNAL_HOSTNAME")
+if RENDER_EXTERNAL_HOSTNAME:
+    ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 

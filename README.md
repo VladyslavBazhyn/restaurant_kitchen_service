@@ -4,7 +4,7 @@ Django project for managing cooks, dish, and ingredients on kitchen
 
 ## Check it out!
 
-[Restaurant_kitchen_service project deployed to Render](#)
+[Restaurant_kitchen_service project deployed to Render](https://restaurant-kitchen-service-i93p.onrender.com/)
 
 ## Installation
 
@@ -31,5 +31,5 @@ python manage.py runserver # Start django server
 ![Website interface](demo.PNG)
 
 ## For inspection of all features use this test user:
-Username: Test_user_1
-Parol: test123test
+* Username: Test_user_1
+* Parol: test123test

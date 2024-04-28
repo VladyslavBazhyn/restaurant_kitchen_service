@@ -29,3 +29,7 @@ python manage.py runserver # Start django server
 ## Demo
 
 ![Website interface](demo.PNG)
+
+## For inspection of all features use this test user:
+Username: Test_user_1
+Parol: test123test

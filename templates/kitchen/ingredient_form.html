@@ -3,6 +3,9 @@
 
 {% block content %}
   <h1>{{ object|yesno:"Update,Create" }} ingredient</h1>
+  <!-- Include jQuery library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  {{ form.media }}
   <form action="" method="post" novalidate>
     {% csrf_token %}
     {{ form|crispy }}

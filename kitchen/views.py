@@ -14,6 +14,8 @@ from kitchen.forms import (
     DishSearchForm,
     DishTypeSearchForm,
     CookUpdateForm,
+    IngredientCreationForm,
+    IngredientUpdateForm
 )
 
 from kitchen.models import (
@@ -168,7 +170,7 @@ class IngredientDeleteView(LoginRequiredMixin, generic.DeleteView):
 
 class IngredientUpdateView(LoginRequiredMixin, generic.UpdateView):
     model = Ingredient
-    fields = ["name", "price", "description"]
+    form_class = IngredientUpdateForm
     success_url = reverse_lazy("kitchen:ingredient-list")
 
 
@@ -198,7 +200,7 @@ class DishTypeUpdateView(LoginRequiredMixin, generic.UpdateView):
 
 class IngredientCreateView(LoginRequiredMixin, generic.CreateView):
     model = Ingredient
-    fields = "__all__"
+    form_class = IngredientCreationForm
     success_url = reverse_lazy("kitchen:ingredient-list")
 
 

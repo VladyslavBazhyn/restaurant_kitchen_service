@@ -20,7 +20,8 @@ load_dotenv()
 # Now you can access environment variables like this:
 SECRET_KEY = os.environ["DJANGO_SECRET_KEY"]
 
-DEBUG = "RENDER" not in os.environ
+# DEBUG = "RENDER" not in os.environ
+DEBUG = True
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
@@ -51,6 +52,7 @@ INSTALLED_APPS = [
     "theme_soft_design",
     "crispy_forms",
     "crispy_bootstrap4",
+    "bootstrap_datepicker_plus",
 ]
 
 MIDDLEWARE = [
@@ -95,6 +97,12 @@ DATABASES = {
         conn_max_age=600
     )
 }
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
 
 INTERNAL_IPS = ["127.0.0.1"]
 

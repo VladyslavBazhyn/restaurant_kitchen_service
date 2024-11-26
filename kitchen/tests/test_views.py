@@ -117,7 +117,7 @@ class PrivateViewsTest(TestCase):
             years_of_experience=1,
             first_name="Test name",
             last_name="Test surname",
-            password="Test parol"
+            password="Test parol",
         )
         self.client.force_login(self.cook)
 
@@ -126,17 +126,17 @@ class PrivateViewsTest(TestCase):
             years_of_experience=2,
             first_name="Test name",
             last_name="Test surname",
-            password="Test parol"
+            password="Test parol",
         )
 
         self.dish_type = DishType.objects.create(
             name="test_type_1",
-            description="test_description_test_description_test_description"
+            description="test_description_test_description_test_description",
         )
 
         self.dish_type_2 = DishType.objects.create(
             name="test_type_2",
-            description="test_description_test_description_test_description"
+            description="test_description_test_description_test_description",
         )
 
         self.ingredient = Ingredient.objects.create(
@@ -179,10 +179,7 @@ class PrivateViewsTest(TestCase):
         self.assertEqual(res.status_code, 200)
 
         ingredient_list = Ingredient.objects.all()
-        self.assertEqual(
-            list(res.context["ingredient_list"]),
-            list(ingredient_list)
-        )
+        self.assertEqual(list(res.context["ingredient_list"]), list(ingredient_list))
 
     def test_retrieve_ingredient_detail_view(self):
         res = self.client.get(INGREDIENT_DETAIL_URL)
@@ -206,10 +203,7 @@ class PrivateViewsTest(TestCase):
         self.assertEqual(res.status_code, 200)
 
         dish_list = Dish.objects.all()
-        self.assertEqual(
-            list(res.context["dish_list"]),
-            list(dish_list)
-        )
+        self.assertEqual(list(res.context["dish_list"]), list(dish_list))
 
     def test_retrieve_dish_detail_view(self):
         res = self.client.get(DISH_DETAIL_URL)
@@ -233,10 +227,7 @@ class PrivateViewsTest(TestCase):
         self.assertEqual(res.status_code, 200)
 
         dish_type_list = DishType.objects.all()
-        self.assertEqual(
-            list(res.context["dish_type_list"]),
-            list(dish_type_list)
-        )
+        self.assertEqual(list(res.context["dish_type_list"]), list(dish_type_list))
 
     def test_retrieve_dish_type_detail_view(self):
         res = self.client.get(DISH_TYPE_DETAIL_URL)
@@ -260,10 +251,7 @@ class PrivateViewsTest(TestCase):
         self.assertEqual(res.status_code, 200)
 
         cook_list = Cook.objects.all()
-        self.assertEqual(
-            list(res.context["cook_list"]),
-            list(cook_list)
-        )
+        self.assertEqual(list(res.context["cook_list"]), list(cook_list))
 
     def test_retrieve_cook_detail_view(self):
         res = self.client.get(COOK_DETAIL_URL)
@@ -288,8 +276,7 @@ class PrivateViewsTest(TestCase):
 
         self.assertEqual(response.status_code, 200)
         self.assertEqual(
-            list(response.context["ingredient_list"]),
-            list(queryset_filtered)
+            list(response.context["ingredient_list"]), list(queryset_filtered)
         )
 
     def test_searching_dish_list_view(self):
@@ -297,10 +284,7 @@ class PrivateViewsTest(TestCase):
         response = self.client.get(DISH_LIST_URL, {"name": "test_dish_1"})
 
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(
-            list(response.context["dish_list"]),
-            list(queryset_filtered)
-        )
+        self.assertEqual(list(response.context["dish_list"]), list(queryset_filtered))
 
     def test_searching_dish_type_list_view(self):
         queryset_filtered = DishType.objects.filter(name__icontains="2")
@@ -308,8 +292,7 @@ class PrivateViewsTest(TestCase):
 
         self.assertEqual(response.status_code, 200)
         self.assertEqual(
-            list(response.context["dish_type_list"]),
-            list(queryset_filtered)
+            list(response.context["dish_type_list"]), list(queryset_filtered)
         )
 
     def test_searching_cook_list_view(self):
@@ -317,7 +300,4 @@ class PrivateViewsTest(TestCase):
         response = self.client.get(COOK_LIST_URL, {"username": "2"})
 
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(
-            list(response.context["cook_list"]),
-            list(queryset_filtered)
-        )
+        self.assertEqual(list(response.context["cook_list"]), list(queryset_filtered))

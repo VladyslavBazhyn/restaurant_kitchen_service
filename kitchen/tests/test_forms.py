@@ -12,7 +12,7 @@ class CookCreationFormTest(TestCase):
             "password2": "password123egege",
             "years_of_experience": 1,
             "first_name": "test first name",
-            "last_name": "test last name"
+            "last_name": "test last name",
         }
 
         form = CookCreationForm(data=form_data)

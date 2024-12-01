@@ -21,7 +21,7 @@ load_dotenv()
 # Now you can access environment variables like this:
 SECRET_KEY = os.environ["DJANGO_SECRET_KEY"]
 
-DEBUG = "RENDER" not in os.environ
+DEBUG = False
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
@@ -29,6 +29,7 @@ DEBUG = "RENDER" not in os.environ
 ALLOWED_HOSTS = ["127.0.0.1"]
 
 RENDER_EXTERNAL_HOSTNAME = os.environ.get("RENDER_EXTERNAL_HOSTNAME")
+
 if RENDER_EXTERNAL_HOSTNAME:
     ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
 
@@ -91,7 +92,8 @@ WSGI_APPLICATION = "restaurant_kitchen_service.wsgi.application"
 
 DATABASES = {
     "default": dj_database_url.config(
-        default=os.environ.get("DATABASE_URL"), conn_max_age=600
+        default=os.environ.get("DATABASE_URL"),
+        conn_max_age=600
     )
 }
 
@@ -134,9 +136,9 @@ USE_TZ = True
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-STATIC_URL = "static/"
+STATIC_URL = "/static/"
 
-STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
+# STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 
 ASSETS_ROOT = "/static"
 
@@ -155,3 +157,10 @@ SECURE_HSTS_INCLUDE_SUBDOMAINS = True
 CSRF_COOKIE_SECURE = True
 
 SECURE_HSTS_PRELOAD = True
+
+if not DEBUG:
+    # Tell Django to copy static assets into a path called `staticfiles` (this is specific to Render)
+    STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
+    # Enable the WhiteNoise storage backend, which compresses static files to reduce disk use
+    # and renames the files with unique names for each version to support long-term caching
+    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'

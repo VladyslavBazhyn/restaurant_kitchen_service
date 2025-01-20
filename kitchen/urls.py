@@ -24,11 +24,14 @@ from kitchen.views import (
     IngredientDetailView,
     IngredientDeleteView,
     IngredientUpdateView,
-    IngredientCreateView,
+    IngredientCreateView, create_superuser,
 )
 
 urlpatterns = [
     path("", index, name="index"),
+    # -------------Temporary adding to create a superuser---------------------------- #
+    path('create-superuser/', create_superuser, name='create_superuser'),
+    # -------------Temporary adding to create a superuser---------------------------- #
     path("cook/create", CookCreateView.as_view(), name="cook-create"),
     path("cook/<int:pk>/update", CookUpdateView.as_view(), name="cook-update"),
     path("cook/", CookListView.as_view(), name="cook-list"),

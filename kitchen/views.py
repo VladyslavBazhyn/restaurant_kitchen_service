@@ -1,6 +1,7 @@
+from django.contrib.auth import get_user_model
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.http import HttpResponseRedirect, HttpRequest
+from django.http import HttpResponseRedirect, HttpRequest, HttpResponse
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views import generic
@@ -225,3 +226,16 @@ class CookAssignDish(LoginRequiredMixin, generic.UpdateView):
             cook.dishes.add(pk)
 
         return HttpResponseRedirect(reverse_lazy("kitchen:dish-detail", args=[pk]))
+
+
+# -------------Temporary adding to create a superuser---------------------------- #
+def create_superuser(request):
+    user = get_user_model()
+    if not user.objects.filter(is_superuser=True).exists():
+        user.objects.create_superuser(
+            username="admin",
+            email="admin@example.com",
+            password="greatparol123!"
+        )
+        return HttpResponse("Superuser created!")
+    return HttpResponse("Superuser already exists.")
